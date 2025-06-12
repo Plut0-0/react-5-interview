@@ -45,14 +45,12 @@ function DisplayStock({Stock}) {
             item.stocked
         )))
     }
-    function searchedStock()
-    {
-        return(
-            Stock.filter(item =>
-                !item.name.includes(inputValue)
-            )
-        )
-    }
+function searchedStock() {
+    const searchTerm = inputValue.toLowerCase(); 
+    return Stock.filter(item =>
+        item.name.toLowerCase().includes(searchTerm)
+    );
+}
 
     return(
         <>
