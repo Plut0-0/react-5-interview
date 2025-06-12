@@ -1,38 +1,129 @@
-.App {
+/* App.css */
+
+/* Basic Reset & Box-Sizing */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* Container for your component (optional, if you want to center it) */
+.my-component-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Input Field */
+input[type="text"] {
+  width: calc(100% - 20px); /* Account for padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Include padding in width */
+  transition: border-color 0.2s ease-in-out;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Checkbox Label */
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #555;
+  cursor: pointer;
+}
+
+label input[type="checkbox"] {
+  margin-right: 8px;
+  /* Customize checkbox appearance (optional, more advanced CSS) */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+label input[type="checkbox"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+label input[type="checkbox"]:checked::before {
+  content: '✔'; /* Checkmark symbol */
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Removes double borders */
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden; /* Ensures rounded corners for content */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee; /* Light separator */
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* Category Headers (th inside tr without td) */
+tr:has(th[colspan="2"]) th { /* Selects th that spans 2 columns directly inside a tr */
+  background-color: #e9ecef; /* Slightly different background for categories */
+  color: #007bff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-bottom: 2px solid #ddd; /* A bit stronger separation */
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Table rows (for hover effect) */
+tr:hover td {
+  background-color: #f6f6f6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Specific styling for items not in stock (assuming `stocked: false` is present) */
+/* You would need to apply a class to the <tr> or <td> for non-stocked items */
+/* For example, in DisplayStock, you could add: */
+/* <tr className={!item.stocked ? 'not-stocked' : ''}> */
+.not-stocked td {
+  color: #a0a0a0; /* Grey out text */
+  text-decoration: line-through; /* Strikethrough */
 }
